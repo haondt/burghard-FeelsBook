@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -18,6 +19,7 @@ public class FeelingList {
     }
 
     public ArrayList<Feeling> getFeelings() {
+        Collections.sort(this.feelings, new FeelingDateComparator());
         return this.feelings;
     }
 
