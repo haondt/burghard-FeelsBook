@@ -10,32 +10,33 @@ import java.util.Collection;
 public class FeelingListTest extends TestCase {
     public void testEmptyFeelingList(){
         FeelingList feelingList = new FeelingList();
-        Collection<Feeling> feelings = feelingList.getFeelings();
-        assertTrue("Empty feeling list", feelings.size() == 0);
+        assertTrue("Empty feeling list", feelingList.size() == 0);
     }
-    // test add feeling / get feeling
+    // test add feeling / get feeling / list size for different emotions
     public void testFeelingList(){
         FeelingList feelingList = new FeelingList();
         Feeling testFeeling = new AngryFeeling();
         feelingList.addFeeling(testFeeling);
-        Collection<Feeling> feelings = feelingList.getFeelings();
-        assertTrue("Feeling list size", feelings.size() == 1);
-        assertTrue("", feelings.contains(testFeeling));
+        assertTrue("Feeling list size", feelingList.size() == 1);
+        assertTrue("", feelingList.contains(testFeeling));
+        assertTrue("Angrysize", feelingList.size("angry") == 1);
+        assertTrue("Sadsize", feelingList.size("sad") == 0);
+
     }
+
     // test remove feeling
     public void testRemoveFeeling(){
         FeelingList feelingList = new FeelingList();
         Feeling testFeeling = new AngryFeeling();
         feelingList.addFeeling(testFeeling);
-        Collection<Feeling> feelings = feelingList.getFeelings();
-        assertTrue("Feeling list size", feelings.size() == 1);
-        assertTrue("", feelings.contains(testFeeling));
+        assertTrue("Feeling list size", feelingList.size() == 1);
+        assertTrue("", feelingList.contains(testFeeling));
         feelingList.removeFeeling(testFeeling);
-        assertTrue("Test student removed", feelings.size() == 0);
-        assertFalse("", feelings.contains(testFeeling));
+        assertTrue("Test student removed", feelingList.size() == 0);
+        assertFalse("", feelingList.contains(testFeeling));
 
     }
-    
+
     // test list ordering
     public void testFeelingListOrder(){
         AngryFeeling angry = new AngryFeeling();
@@ -56,8 +57,6 @@ public class FeelingListTest extends TestCase {
         // compare update order
         angry.setDate(1998,0,1);
         assertTrue("Feeling list order", feelingList.getFeelings().equals(feelingsreverse));
-
-
 
     }
 

@@ -49,4 +49,22 @@ public class FeelingList {
             throw new RuntimeException("Feeling not found");
         }
     }
+
+    public boolean contains(Feeling feeling) {
+        return this.feelings.contains(feeling);
+    }
+
+    public int size() {
+        return this.feelings.size();
+    }
+
+    public int size(String emotion) {
+        if(this.count.containsKey(emotion)){
+            return this.count.get(emotion);
+        }
+        else{
+            return 0;
+        }
+    }
+
 }
