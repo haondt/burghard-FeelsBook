@@ -13,14 +13,14 @@ import java.util.GregorianCalendar;
 public class FeelsBookTest extends TestCase {
     // test get emotion
     public void testFeeling(){
-        AngryFeeling angry = new AngryFeeling();
+        AngerFeeling angry = new AngerFeeling();
         assertTrue("AngryFeeling is not equal", "angry".equals(angry.getEmotion()));
     }
 
     //test comment
     public void testFeelingComment(){
-        AngryFeeling angry = new AngryFeeling();
-        AngryFeeling angryComment = new AngryFeeling();
+        AngerFeeling angry = new AngerFeeling();
+        AngerFeeling angryComment = new AngerFeeling();
         angryComment.setComment("I lost 20$ today");
         assertTrue("angry comment is empty", "".equals(angry.getComment()));
         assertTrue("angryComment comment is populated", "I lost 20$ today".equals(angryComment.getComment()));

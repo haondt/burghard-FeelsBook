@@ -15,19 +15,19 @@ public class FeelingListTest extends TestCase {
     // test add feeling / get feeling / list size for different emotions
     public void testFeelingList(){
         FeelingList feelingList = new FeelingList();
-        Feeling testFeeling = new AngryFeeling();
+        Feeling testFeeling = new AngerFeeling();
         feelingList.addFeeling(testFeeling);
         assertTrue("Feeling list size", feelingList.size() == 1);
         assertTrue("", feelingList.contains(testFeeling));
-        assertTrue("Angrysize", feelingList.size("angry") == 1);
-        assertTrue("Sadsize", feelingList.size("sad") == 0);
+        assertTrue("Angrysize", feelingList.size("anger") == 1);
+        assertTrue("Sadsize", feelingList.size("sadness") == 0);
 
     }
 
     // test remove feeling
     public void testRemoveFeeling(){
         FeelingList feelingList = new FeelingList();
-        Feeling testFeeling = new AngryFeeling();
+        Feeling testFeeling = new AngerFeeling();
         feelingList.addFeeling(testFeeling);
         assertTrue("Feeling list size", feelingList.size() == 1);
         assertTrue("", feelingList.contains(testFeeling));
@@ -39,8 +39,8 @@ public class FeelingListTest extends TestCase {
 
     // test list ordering
     public void testFeelingListOrder(){
-        AngryFeeling angry = new AngryFeeling();
-        AngryFeeling angry2 = new AngryFeeling();
+        AngerFeeling angry = new AngerFeeling();
+        AngerFeeling angry2 = new AngerFeeling();
         ArrayList<Feeling> feelings = new ArrayList<Feeling>();
         feelings.add(angry);
         feelings.add(angry2);

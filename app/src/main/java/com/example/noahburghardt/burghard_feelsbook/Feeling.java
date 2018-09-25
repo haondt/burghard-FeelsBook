@@ -56,6 +56,4 @@ public abstract class Feeling {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         return df.format(this.calendar.getTime());
     }
-
-
 }
