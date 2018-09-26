@@ -19,16 +19,25 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package com.example.noahburghardt.burghard_feelsbook;
 
+import android.content.res.Resources;
+import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView moodHistory;
     private FeelingList feelings;
+    private FeelingsAdapter adapter;
 
 
     @Override
@@ -37,12 +46,89 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         this.feelings = new FeelingList();
-        
+        this.moodHistory = findViewById(R.id.MoodHistory);
+        this.adapter = new FeelingsAdapter(this, this.feelings);
+
+        // use grid layout manager
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
+        moodHistory.setLayoutManager(mLayoutManager);
+
+        moodHistory.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
+        moodHistory.setItemAnimator(new DefaultItemAnimator());
+        moodHistory.setAdapter(this.adapter);
 
     }
 
-    public void addAngry(View view){
+    /**
+     * RecyclerView item decoration - give equal margin around grid item
+     * - credit Ravi Tamada 2018-07-12
+     *  https://www.androidhive.info/2016/05/android-working-with-card-view-and-recycler-view/
+     */
+    public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
 
-        Toast.makeText(this, "Added angry emotion", Toast.LENGTH_SHORT).show();
+        private int spanCount;
+        private int spacing;
+        private boolean includeEdge;
+
+        public GridSpacingItemDecoration(int spanCount, int spacing, boolean includeEdge) {
+            this.spanCount = spanCount;
+            this.spacing = spacing;
+            this.includeEdge = includeEdge;
+        }
+
+        @Override
+        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+            int position = parent.getChildAdapterPosition(view); // item position
+            int column = position % spanCount; // item column
+
+            if (includeEdge) {
+                outRect.left = spacing - column * spacing / spanCount; // spacing - column * ((1f / spanCount) * spacing)
+                outRect.right = (column + 1) * spacing / spanCount; // (column + 1) * ((1f / spanCount) * spacing)
+
+                if (position < spanCount) { // top edge
+                    outRect.top = spacing;
+                }
+                outRect.bottom = spacing; // item bottom
+            } else {
+                outRect.left = column * spacing / spanCount; // column * ((1f / spanCount) * spacing)
+                outRect.right = spacing - (column + 1) * spacing / spanCount; // spacing - (column + 1) * ((1f /    spanCount) * spacing)
+                if (position >= spanCount) {
+                    outRect.top = spacing; // item top
+                }
+            }
+        }
     }
+
+
+    private int dpToPx(int dp){
+        Resources r = getResources();
+        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
+    }
+
+    public void addAnger(View view){
+        this.feelings.addFeeling(new AngerFeeling());
+        this.adapter.notifyDataSetChanged();
+    }
+
+    public void addSadness(View view){
+        this.feelings.addFeeling(new SadnessFeeling());
+        this.adapter.notifyDataSetChanged();
+    }
+    public void addLove(View view){
+        this.feelings.addFeeling(new LoveFeeling());
+        this.adapter.notifyDataSetChanged();
+    }
+    public void addFear(View view){
+        this.feelings.addFeeling(new FearFeeling());
+        this.adapter.notifyDataSetChanged();
+    }
+    public void addSurprise(View view){
+        this.feelings.addFeeling(new SurpriseFeeling());
+        this.adapter.notifyDataSetChanged();
+    }
+    public void addJoy(View view){
+        this.feelings.addFeeling(new JoyFeeling());
+        this.adapter.notifyDataSetChanged();
+    }
+
 }

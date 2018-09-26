@@ -7,33 +7,45 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:id="@+id/main_content"
-    android:background="@android:color/white"
+    android:background="@android:color/darker_gray"
     android:fitsSystemWindows="true" >
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/MoodHistory"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_height="fill_parent"
         android:scrollbars="vertical"
-        android:clipToPadding="false" />
+        android:clipToPadding="false"
+        android:background="@android:color/transparent"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="fill_parent"
+        android:gravity="bottom">
+        <ImageView
+            android:id="@+id/home_bottom_drawer"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/drawer" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
         android:gravity="bottom"
         android:orientation="vertical"
-        android:paddingBottom="20dp">
+        android:paddingBottom="20dp"
+        android:background="@android:color/transparent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:background="@android:color/transparent">
 
             <ImageButton
                 android:id="@+id/angerButton"
@@ -42,7 +54,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:background="@drawable/button_shadow"
-                android:onClick="addAngry"
+                android:onClick="addAnger"
                 android:paddingBottom="15dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
@@ -54,7 +66,10 @@
                 android:id="@+id/sadnessButton"
                 android:layout_width="@dimen/fab_icon_size"
                 android:layout_height="@dimen/fab_icon_size"
+                android:clickable="true"
+                android:focusable="true"
                 android:background="@drawable/button_shadow"
+                android:onClick="addSadness"
                 android:paddingBottom="15dp"
                 android:paddingTop="5dp"
                 android:paddingLeft="10dp"
@@ -66,7 +81,10 @@
                 android:id="@+id/fearButton"
                 android:layout_width="@dimen/fab_icon_size"
                 android:layout_height="@dimen/fab_icon_size"
+                android:clickable="true"
+                android:focusable="true"
                 android:background="@drawable/button_shadow"
+                android:onClick="addFear"
                 android:paddingBottom="15dp"
                 android:paddingTop="5dp"
                 android:paddingLeft="10dp"
@@ -79,13 +97,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:background="@android:color/transparent">
 
             <ImageButton
                 android:id="@+id/joyButton"
                 android:layout_width="@dimen/fab_icon_size"
                 android:layout_height="@dimen/fab_icon_size"
+                android:clickable="true"
+                android:focusable="true"
                 android:background="@drawable/button_shadow"
+                android:onClick="addJoy"
                 android:paddingBottom="15dp"
                 android:paddingTop="5dp"
                 android:paddingLeft="10dp"
@@ -97,7 +119,10 @@
                 android:id="@+id/surpriseButton"
                 android:layout_width="@dimen/fab_icon_size"
                 android:layout_height="@dimen/fab_icon_size"
+                android:clickable="true"
+                android:focusable="true"
                 android:background="@drawable/button_shadow"
+                android:onClick="addSurprise"
                 android:paddingBottom="15dp"
                 android:paddingTop="5dp"
                 android:paddingLeft="10dp"
@@ -109,7 +134,10 @@
                 android:id="@+id/loveButton"
                 android:layout_width="@dimen/fab_icon_size"
                 android:layout_height="@dimen/fab_icon_size"
+                android:clickable="true"
+                android:focusable="true"
                 android:background="@drawable/button_shadow"
+                android:onClick="addLove"
                 android:paddingBottom="15dp"
                 android:paddingTop="5dp"
                 android:paddingLeft="10dp"
@@ -119,7 +147,6 @@
 
         </LinearLayout>
     </LinearLayout>
-
 
 
 

@@ -67,4 +67,8 @@ public class FeelingList {
         }
     }
 
+    public Feeling getFeeling(int position) {
+        return this.feelings.get(position);
+    }
+
 }
