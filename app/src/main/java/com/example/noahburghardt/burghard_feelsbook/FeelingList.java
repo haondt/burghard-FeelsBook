@@ -26,6 +26,7 @@ public class FeelingList {
     public void addFeeling(Feeling feeling){
         // add feeling to list of feelings
         this.feelings.add(feeling);
+        Collections.sort(this.feelings, new FeelingDateComparator());
 
         // if emotion is not in dictionary, add it
         // otherwise increase count by one
@@ -68,6 +69,8 @@ public class FeelingList {
     }
 
     public Feeling getFeeling(int position) {
+
+
         return this.feelings.get(position);
     }
 

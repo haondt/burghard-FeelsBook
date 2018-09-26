@@ -24,6 +24,7 @@ public class FeelingsAdapter extends RecyclerView.Adapter<FeelingsAdapter.MyView
     private Context context;
     private Map<String, Integer> icons;
 
+    // holder for emotion card views
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView card_icon;
         public TextView card_title, card_date, card_comment;

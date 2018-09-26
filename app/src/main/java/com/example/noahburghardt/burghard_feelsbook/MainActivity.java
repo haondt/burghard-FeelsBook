@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
         moodHistory.setLayoutManager(mLayoutManager);
 
+        // set decoration, animation and adapter
         moodHistory.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
         moodHistory.setItemAnimator(new DefaultItemAnimator());
         moodHistory.setAdapter(this.adapter);
