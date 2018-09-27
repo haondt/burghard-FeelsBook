@@ -18,13 +18,15 @@ public class FeelingList {
         this.count = new HashMap<String, Integer>();
     }
 
+
+    // Returns list of feelings
     public ArrayList<Feeling> getFeelings() {
-        Collections.sort(this.feelings, new FeelingDateComparator());
         return this.feelings;
     }
 
+    // Adds feeling to list of feelings
     public void addFeeling(Feeling feeling){
-        // add feeling to list of feelings
+        // add feeling to list of feelings and sort it
         this.feelings.add(feeling);
         Collections.sort(this.feelings, new FeelingDateComparator());
 
@@ -38,6 +40,7 @@ public class FeelingList {
         }
     }
 
+    // Removes feeling from list of feelings
     public void removeFeeling(Feeling feeling) {
         // Check to make sure feeling is in list
         if(this.feelings.contains(feeling)){
@@ -51,14 +54,17 @@ public class FeelingList {
         }
     }
 
+    // check if feeling is in feelings list
     public boolean contains(Feeling feeling) {
         return this.feelings.contains(feeling);
     }
 
+    // return size of entire feelings list
     public int size() {
         return this.feelings.size();
     }
 
+    // return number of specific emotion in feeling list
     public int size(String emotion) {
         if(this.count.containsKey(emotion)){
             return this.count.get(emotion);
@@ -68,10 +74,13 @@ public class FeelingList {
         }
     }
 
+    // get feeling object at specific position
     public Feeling getFeeling(int position) {
-
-
         return this.feelings.get(position);
     }
 
+    // get position of specific feeling object
+    public int getFeelingPosition(Feeling feeling) {
+        return this.feelings.indexOf(feeling);
+    }
 }

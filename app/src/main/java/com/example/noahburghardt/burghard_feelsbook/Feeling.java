@@ -9,7 +9,7 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.TimeZone;
 
-public abstract class Feeling {
+public  class Feeling {
     protected String emotion;
     protected Calendar calendar;
     protected String comment;

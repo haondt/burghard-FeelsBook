@@ -106,30 +106,17 @@ public class MainActivity extends AppCompatActivity {
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
 
-    public void addAnger(View view){
-        this.feelings.addFeeling(new AngerFeeling());
-        this.adapter.notifyDataSetChanged();
+    // called by each button,
+    // relies on button tag for emotion type
+    public void addFeeling(View v){
+        // add button
+        Feeling feeling = new Feeling(v.getTag().toString());
+        this.feelings.addFeeling(feeling);
+        // scroll and update cards
+        int pos = this.feelings.getFeelingPosition(feeling);
+        this.moodHistory.smoothScrollToPosition(pos);
+        this.adapter.notifyItemInserted(pos);
     }
 
-    public void addSadness(View view){
-        this.feelings.addFeeling(new SadnessFeeling());
-        this.adapter.notifyDataSetChanged();
-    }
-    public void addLove(View view){
-        this.feelings.addFeeling(new LoveFeeling());
-        this.adapter.notifyDataSetChanged();
-    }
-    public void addFear(View view){
-        this.feelings.addFeeling(new FearFeeling());
-        this.adapter.notifyDataSetChanged();
-    }
-    public void addSurprise(View view){
-        this.feelings.addFeeling(new SurpriseFeeling());
-        this.adapter.notifyDataSetChanged();
-    }
-    public void addJoy(View view){
-        this.feelings.addFeeling(new JoyFeeling());
-        this.adapter.notifyDataSetChanged();
-    }
 
 }
