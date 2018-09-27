@@ -28,10 +28,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
-
-import com.bumptech.glide.Glide;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // initialize attributes
         this.feelings = new FeelingList();
         this.moodHistory = findViewById(R.id.MoodHistory);
         this.adapter = new FeelingsAdapter(this, this.feelings);
@@ -116,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
         int pos = this.feelings.getFeelingPosition(feeling);
         this.moodHistory.smoothScrollToPosition(pos);
         this.adapter.notifyItemInserted(pos);
+
     }
 
 

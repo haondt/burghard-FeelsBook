@@ -9,11 +9,13 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.TimeZone;
 
+// Object for storing feelings
 public  class Feeling {
-    protected String emotion;
-    protected Calendar calendar;
-    protected String comment;
+    private String emotion;
+    private Calendar calendar;
+    private String comment;
 
+    // initialize a new feeling with a given emotion
     public Feeling(String emotion){
         this.emotion = emotion;
         this.calendar = new GregorianCalendar();
@@ -27,16 +29,20 @@ public  class Feeling {
     public String getComment(){
         return this.comment;
     }
+
     public void setComment(String comment){
         this.comment = comment;
     }
+
     public Calendar getCalendar(){
         return this.calendar;
     }
+
     public void setCalendar(Calendar calendar){
         this.calendar = calendar;
     }
 
+    // allows modification of date with year, month, day, [hour, minute] or date object
     public void setDate(int year, int month, int day){
         this.calendar.set(Calendar.YEAR, year);
         this.calendar.set(Calendar.MONTH, month);
@@ -52,8 +58,18 @@ public  class Feeling {
 
     }
 
-    public String getDate(){
+    public void setDate(Date date){
+        this.calendar.setTime(date);
+    }
+
+    // returns the date in string form and iso8601 format
+    public String getDateString(){
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         return df.format(this.calendar.getTime());
+    }
+
+    // returns the date as a Date object
+    public Date getDate(){
+        return this.calendar.getTime();
     }
 }
