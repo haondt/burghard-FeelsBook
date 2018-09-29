@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FeelsBook</string>
+    <string name="app_name">burghard-FeelsBook</string>
     <string name="title_activity_edit_card">Edit Card Activity</string>
     <string name="edit_hint">Add comment</string>
     <string name="button_confirm">OK</string>

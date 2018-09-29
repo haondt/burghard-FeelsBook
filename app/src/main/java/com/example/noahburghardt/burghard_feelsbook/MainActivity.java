@@ -121,10 +121,6 @@ public class MainActivity extends AppCompatActivity {
         // and ρяσѕρєя K
         // https://stackoverflow.com/a/11316855
         this.sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-
-        // numFeelings: number of saved feelings
-        // savedFeelings: an [emotion],[date] formatted string for each feeling
-        // savedComments: a comment for each saved feeling
         Gson gson = new Gson();
         String json = this.sharedPref.getString("savedFeelings", "");
         FeelingList newFeelings = gson.fromJson(json, FeelingList.class);

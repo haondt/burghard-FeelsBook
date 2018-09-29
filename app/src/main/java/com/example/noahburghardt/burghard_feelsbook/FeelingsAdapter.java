@@ -1,7 +1,6 @@
 /*
 Based off the work by Ravi Tamada at
 https://www.androidhive.info/2016/05/android-working-with-card-view-and-recycler-view/
-18/05/16
  */
 
 package com.example.noahburghardt.burghard_feelsbook;
