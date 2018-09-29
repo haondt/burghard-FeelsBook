@@ -92,6 +92,7 @@ public class FeelingList implements Serializable {
 
     // save current data to file
     public void save(SharedPreferences sharedPref) {
+        Collections.sort(this.feelings, new FeelingDateComparator());
         SharedPreferences.Editor editor = sharedPref.edit();
         Gson gson = new Gson();
         String json = gson.toJson(this);
