@@ -32,8 +32,8 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bindData(Feeling feeling, Context context){
-        this.card_title.setText(feeling.getEmotion());
-        this.card_date.setText(feeling.getDateString());
+        this.card_title.setText(feeling.getTitle());
+        this.card_date.setText(feeling.getDate8601());
         this.card_comment.setText(feeling.getComment());
         Resources resources = context.getResources();
         final int resourceID = resources.getIdentifier("ic_" + feeling.getEmotion() + "_icon", "drawable",context.getPackageName());

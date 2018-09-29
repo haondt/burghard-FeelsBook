@@ -1,15 +1,21 @@
 package com.example.noahburghardt.burghard_feelsbook;
 
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 
+import com.google.gson.Gson;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
-public class FeelingList {
+public class FeelingList implements Serializable {
     protected ArrayList<Feeling> feelings;
     private Map<String, Integer> count;
 
@@ -83,4 +89,14 @@ public class FeelingList {
     public int getFeelingPosition(Feeling feeling) {
         return this.feelings.indexOf(feeling);
     }
+
+    // save current data to file
+    public void save(SharedPreferences sharedPref) {
+        SharedPreferences.Editor editor = sharedPref.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(this);
+        editor.putString("savedFeelings", json);
+        editor.commit();
+    }
+
 }

@@ -19,9 +19,8 @@ import android.widget.Toast;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FeelingsAdapter extends RecyclerView.Adapter<CardViewHolder> implements ItemTouchHelperAdapter {
+public class FeelingsAdapter extends RecyclerView.Adapter<CardViewHolder> {
 
-    private final OnStartDragListener mDragStartListener;
     private FeelingList feelings;
     final private Context context;
     private Map<String, Integer> icons;
@@ -50,15 +49,21 @@ public class FeelingsAdapter extends RecyclerView.Adapter<CardViewHolder> implem
     // pass data from Feeling in feelingList model to corresponding card at given position
     @Override
     public void onBindViewHolder(final CardViewHolder holder, int position) {
-        holder.bindData(feelings.getFeeling(position), context);
+        // grad corresponding Feeling object
+        final Feeling feeling = feelings.getFeeling(position);
+        // bind data
+        holder.bindData(feeling, context);
 
         // Open up edit screen when cards clicked
         holder.card_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent container = new Intent(context.getApplicationContext(), EditCardActivity.class);
+                container.putExtra("feeling", feeling);
+                container.putExtra("feelingList", feelings);
                 Toast.makeText(v.getContext(), v.getTag().toString(),Toast.LENGTH_SHORT).show();
                 context.startActivity(container);
+
             }
         });
 
@@ -71,7 +76,4 @@ public class FeelingsAdapter extends RecyclerView.Adapter<CardViewHolder> implem
         return feelings.size();
     }
 
-    public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
-        mItemTouchHelper.startDrag(viewHolder);
-    }
 }
