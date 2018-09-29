@@ -1,6 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:id="@+id/main_content"
+    android:fitsSystemWindows="true"
+    >
+
+    <!-- App bar -->
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:layout_scrollFlags="scroll|snap|enterAlways">
+
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/main_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize" >
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FeelsBook"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    app:fontFamily="sans-serif" />
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <!-- scrolling cards -->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/MoodHistory"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:clipToPadding="false"
+        android:background="@android:color/transparent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:gravity="bottom">
+        <ImageView
+            android:id="@+id/home_bottom_drawer"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/drawer" />
+    </LinearLayout>
+
+    <!-- buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:paddingBottom="20dp"
+        android:background="@android:color/transparent"
+        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:background="@android:color/transparent">
+
+            <ImageButton
+                android:tag="anger"
+                android:id="@+id/angerButton"
+                android:layout_width="@dimen/fab_icon_size"
+                android:layout_height="@dimen/fab_icon_size"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/button_shadow"
+                android:onClick="addFeeling"
+                android:paddingBottom="15dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_anger_icon"
+                android:foreground="@drawable/button_foreground"
+                />
+
+            <ImageButton
+                android:tag="sadness"
+                android:id="@+id/sadnessButton"
+                android:layout_width="@dimen/fab_icon_size"
+                android:layout_height="@dimen/fab_icon_size"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/button_shadow"
+                android:onClick="addFeeling"
+                android:paddingBottom="15dp"
+                android:paddingTop="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_sadness_icon"
+                android:foreground="@drawable/button_foreground" />
+
+            <ImageButton
+                android:tag="fear"
+                android:id="@+id/fearButton"
+                android:layout_width="@dimen/fab_icon_size"
+                android:layout_height="@dimen/fab_icon_size"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/button_shadow"
+                android:onClick="addFeeling"
+                android:paddingBottom="15dp"
+                android:paddingTop="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_fear_icon"
+                android:foreground="@drawable/button_foreground" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:background="@android:color/transparent">
+
+            <ImageButton
+                android:tag="joy"
+                android:id="@+id/joyButton"
+                android:layout_width="@dimen/fab_icon_size"
+                android:layout_height="@dimen/fab_icon_size"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/button_shadow"
+                android:onClick="addFeeling"
+                android:paddingBottom="15dp"
+                android:paddingTop="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_joy_icon"
+                android:foreground="@drawable/button_foreground" />
+
+            <ImageButton
+                android:tag="surprise"
+                android:id="@+id/surpriseButton"
+                android:layout_width="@dimen/fab_icon_size"
+                android:layout_height="@dimen/fab_icon_size"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/button_shadow"
+                android:onClick="addFeeling"
+                android:paddingBottom="15dp"
+                android:paddingTop="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_surprise_icon"
+                android:foreground="@drawable/button_foreground" />
+
+            <ImageButton
+                android:tag="love"
+                android:id="@+id/loveButton"
+                android:layout_width="@dimen/fab_icon_size"
+                android:layout_height="@dimen/fab_icon_size"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/button_shadow"
+                android:onClick="addFeeling"
+                android:paddingBottom="15dp"
+                android:paddingTop="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_love_icon"
+                android:foreground="@drawable/button_foreground"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</android.support.design.widget.CoordinatorLayout>

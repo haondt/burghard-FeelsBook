@@ -1,35 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:showIn="activity_main">
 
-    <group android:title="Counts">
-        <menu>
+    <group>
             <item
                 android:id="@+id/nav_anger"
-                android:icon="@drawable/ic_anger_icon"
-                android:title="Anger" />
+                android:icon="@drawable/ic_anger_mini"
+                android:title="Anger"
+                app:actionViewClass="android.widget.TextView"/>
             <item
                 android:id="@+id/nav_fear"
                 android:icon="@drawable/ic_fear_icon"
-                android:title="Fear" />
+                android:title="Fear"
+                app:actionViewClass="android.widget.TextView" />
             <item
                 android:id="@+id/nav_joy"
                 android:icon="@drawable/ic_joy_icon"
-                android:title="Joy" />
+                android:title="Joy"
+                app:actionViewClass="android.widget.TextView"/>
             <item
                 android:id="@+id/nav_love"
                 android:icon="@drawable/ic_love_icon"
-                android:title="Love" />
+                android:title="Love"
+                app:actionViewClass="android.widget.TextView"/>
 
             <item
                 android:id="@+id/nav_sadness"
                 android:icon="@drawable/ic_sadness_icon"
-                android:title="Sadness" />
+                android:title="Sadness"
+                app:actionViewClass="android.widget.TextView"/>
             <item
                 android:id="@+id/nav_surprise"
                 android:icon="@drawable/ic_surprise_icon"
-                android:title="Surprise" />
-        </menu>
+                android:title="Surprise"
+                app:actionViewClass="android.widget.TextView" />
     </group>
 </menu>

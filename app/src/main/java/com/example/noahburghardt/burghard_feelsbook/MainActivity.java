@@ -19,7 +19,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 /*
-    saved/load feeling built off the work my Mkyong
+    saved/load feeling built off the work by Mkyong
     https://www.mkyong.com/java/how-do-convert-java-object-to-from-json-format-gson-api/
  */
 package com.example.noahburghardt.burghard_feelsbook;
@@ -30,16 +30,22 @@ import android.content.res.Resources;
 import android.graphics.Rect;
 import android.preference.PreferenceManager;
 import android.renderscript.Type;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.TypedValue;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -50,18 +56,47 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import static android.support.v4.view.MenuItemCompat.getActionView;
+
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView moodHistory;
     private FeelingList feelings;
     private FeelingsAdapter adapter;
     public SharedPreferences sharedPref;
+    private HashMap<String, TextView> nav_counters;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // draw button on toolbar
+        // via the android developers tutorial
+        // https://developer.android.com/training/implementing-navigation/nav-drawer
+        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        toolbar.setTitle("FeelsBook");
+        toolbar.setNavigationIcon(R.drawable.ic_menu_white);
+        setSupportActionBar(toolbar);
+
+        // attach appbar button to drawer toggle
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+
+        // Nav drawer counter implementation by Hari Vignesh Jayapalan
+        // https://android.jlelse.eu/android-adding-badge-or-count-to-the-navigation-drawer-84c93af1f4d9
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        this.nav_counters = new HashMap<String, TextView>();
+        nav_counters.put("anger", (TextView) navigationView.getMenu().findItem(R.id.nav_anger).getActionView());
+        nav_counters.put("sadness", (TextView) navigationView.getMenu().findItem(R.id.nav_sadness).getActionView());
+        nav_counters.put("joy", (TextView) navigationView.getMenu().findItem(R.id.nav_joy).getActionView());
+        nav_counters.put("fear", (TextView) navigationView.getMenu().findItem(R.id.nav_fear).getActionView());
+        nav_counters.put("love", (TextView) navigationView.getMenu().findItem(R.id.nav_love).getActionView());
+        nav_counters.put("surprise", (TextView) navigationView.getMenu().findItem(R.id.nav_surprise).getActionView());
 
         // initialize attributes
         this.feelings = new FeelingListController().getFeelingList();
@@ -101,7 +136,17 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        // fill in count drawer
+        initializeCountDrawer();
 
+    }
+
+    public void initializeCountDrawer(){
+        String[] emotions = {"anger", "fear", "joy", "love", "sadness", "surprise"};
+        for(String s : emotions){
+            TextView view = this.nav_counters.get(s);
+            view.setText(Integer.toString(this.feelings.size(s)));
+        }
     }
 
     /**
@@ -166,6 +211,9 @@ public class MainActivity extends AppCompatActivity {
         // update saved feelings
         this.feelings.save(this.sharedPref);
 
+        // update drawer counter
+        initializeCountDrawer();
+
 
     }
 
@@ -173,6 +221,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
         this.adapter.notifyDataSetChanged();
+        // update drawer counter
+        this.initializeCountDrawer();
 
     }
 

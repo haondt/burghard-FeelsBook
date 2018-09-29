@@ -4,4 +4,6 @@
     <string name="edit_hint">Add comment</string>
     <string name="button_confirm">OK</string>
     <string name="button_cancel">CANCEL</string>
+    <string name="navigation_drawer_close">\"drawer closed\"</string>
+    <string name="navigation_drawer_open">\"drawer opened\"</string>
 </resources>
