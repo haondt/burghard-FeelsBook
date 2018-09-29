@@ -41,5 +41,6 @@ public class SimpleItemTouchCallback extends ItemTouchHelper.SimpleCallback {
         adapter.notifyItemRemoved(position);
         adapter.notifyItemRangeChanged(position-1, this.feelings.size());
         this.feelings.save(PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext()));
+        Toast.makeText(context,"Card deleted",Toast.LENGTH_SHORT).show();
     }
 }

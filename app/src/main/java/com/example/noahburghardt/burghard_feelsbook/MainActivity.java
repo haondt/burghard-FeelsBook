@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // initialize attributes
-        this.feelings = new FeelingList();
+        this.feelings = new FeelingListController().getFeelingList();
         this.moodHistory = findViewById(R.id.MoodHistory);
         this.adapter = new FeelingsAdapter(this, this.feelings);
 

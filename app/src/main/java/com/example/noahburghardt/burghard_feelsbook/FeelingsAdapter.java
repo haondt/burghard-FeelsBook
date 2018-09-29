@@ -48,7 +48,7 @@ public class FeelingsAdapter extends RecyclerView.Adapter<CardViewHolder> {
 
     // pass data from Feeling in feelingList model to corresponding card at given position
     @Override
-    public void onBindViewHolder(final CardViewHolder holder, int position) {
+    public void onBindViewHolder(final CardViewHolder holder, final int position) {
         // grad corresponding Feeling object
         final Feeling feeling = feelings.getFeeling(position);
         // bind data
@@ -59,9 +59,7 @@ public class FeelingsAdapter extends RecyclerView.Adapter<CardViewHolder> {
             @Override
             public void onClick(View v) {
                 Intent container = new Intent(context.getApplicationContext(), EditCardActivity.class);
-                container.putExtra("feeling", feeling);
-                container.putExtra("feelingList", feelings);
-                Toast.makeText(v.getContext(), v.getTag().toString(),Toast.LENGTH_SHORT).show();
+                container.putExtra("position", position);
                 context.startActivity(container);
 
             }

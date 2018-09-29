@@ -58,7 +58,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/edit_date"
             android:layout_margin="@dimen/fab_margin"
-            android:gravity="center_vertical|start"/>
+            android:gravity="center_vertical|start"
+            android:clickable="true"/>
 
         <EditText
             android:id="@+id/edit_comment"
@@ -66,8 +67,100 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|top"
             android:layout_margin="@dimen/fab_margin"
-            android:hint="@string/edit_hint" />
+            android:hint="@string/edit_hint"
+            android:maxLength="100"/>
 
     </LinearLayout>
 
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:padding="8dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_gravity="center_vertical">
+
+        <DatePicker
+            android:id="@+id/date_picker"
+            android:calendarViewShown="true"
+            android:spinnersShown="false"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/picker_margin"
+            android:layout_marginRight="@dimen/picker_margin"
+            android:layout_marginTop="@dimen/picker_margin"
+            android:layout_height="match_parent"
+            android:background="@android:color/background_light"
+            android:elevation="10dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:background="@android:color/background_light"
+
+            android:layout_marginLeft="@dimen/picker_margin"
+            android:layout_marginRight="@dimen/picker_margin"
+            android:layout_marginBottom="@dimen/picker_margin"
+            android:elevation="10dp">
+            <Button
+                android:id="@+id/date_cancel"
+                android:layout_width="wrap_content"
+                android:text="@string/button_cancel"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:layout_marginBottom="15dp"/>
+            <Button
+                android:id="@+id/date_set"
+                android:layout_width="wrap_content"
+                android:text="@string/button_confirm"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:layout_marginBottom="15dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_gravity="center_vertical">
+
+        <TimePicker
+            android:id="@+id/time_picker"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/picker_margin"
+            android:layout_marginRight="@dimen/picker_margin"
+            android:layout_marginTop="@dimen/picker_margin"
+            android:layout_height="match_parent"
+            android:background="@android:color/background_light"
+            android:elevation="10dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:background="@android:color/background_light"
+
+            android:layout_marginLeft="@dimen/picker_margin"
+            android:layout_marginRight="@dimen/picker_margin"
+            android:layout_marginBottom="@dimen/picker_margin"
+            android:elevation="10dp">
+            <Button
+                android:id="@+id/time_cancel"
+                android:layout_width="wrap_content"
+                android:text="@string/button_cancel"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:layout_marginBottom="15dp"/>
+            <Button
+                android:id="@+id/time_set"
+                android:layout_width="wrap_content"
+                android:text="@string/button_confirm"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:layout_marginBottom="15dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

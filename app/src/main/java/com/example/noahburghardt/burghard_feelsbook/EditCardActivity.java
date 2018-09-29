@@ -43,10 +43,10 @@ public class EditCardActivity extends AppCompatActivity {
 
         // Fetch intent and passed feeling object
         Intent intent = getIntent();
-        Feeling feeling = (Feeling) intent.getSerializableExtra("feeling");
-        FeelingList feelings = (FeelingList) intent.getSerializableExtra("feelingList");
-        this.feeling = feeling;
-        this.feelings = feelings;
+        int position = intent.getIntExtra("position", 0);
+        // fetch singleton feeling list
+        this.feelings = new FeelingListController().getFeelingList();
+        this.feeling = this.feelings.getFeeling(position);
 
         // Fetch view IDs
         this.edit_comment = findViewById(R.id.edit_comment);
@@ -78,7 +78,6 @@ public class EditCardActivity extends AppCompatActivity {
     protected void onStop(){
         super.onStop();
         this.feeling.setComment(this.edit_comment.getText().toString());
-        Toast.makeText(this, this.feeling.getComment(),Toast.LENGTH_SHORT).show();
         this.feelings.save(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
     }
 
