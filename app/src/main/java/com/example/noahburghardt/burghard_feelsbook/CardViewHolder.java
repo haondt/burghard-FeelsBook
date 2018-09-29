@@ -1,18 +1,22 @@
 package com.example.noahburghardt.burghard_feelsbook;
 
+import android.content.Intent;
 import android.content.res.Resources;
+import android.support.v13.view.DragStartHelper;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.bumptech.glide.load.engine.Resource;
 
 // holder for card views
 public class CardViewHolder extends RecyclerView.ViewHolder {
+
+
     public ImageView card_icon;
     public TextView card_title, card_date, card_comment;
     public CardView card_view;
@@ -25,12 +29,6 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
         this.card_comment = view.findViewById(R.id.card_comment);
         this.card_view = view.findViewById(R.id.moodCardView);
 
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(view.getContext(), view.getTag().toString(),Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     public void bindData(Feeling feeling, Context context){

@@ -26,6 +26,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.TypedValue;
 import android.view.View;
 
@@ -54,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
         moodHistory.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
         moodHistory.setItemAnimator(new DefaultItemAnimator());
         moodHistory.setAdapter(this.adapter);
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper();
+        itemTouchHelper.attachToRecyclerView(moodHistory);
 
     }
 
@@ -95,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+
     }
 
 

@@ -7,15 +7,21 @@ https://www.androidhive.info/2016/05/android-working-with-card-view-and-recycler
 package com.example.noahburghardt.burghard_feelsbook;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v13.view.DragStartHelper;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class FeelingsAdapter extends RecyclerView.Adapter<CardViewHolder> {
+public class FeelingsAdapter extends RecyclerView.Adapter<CardViewHolder> implements ItemTouchHelperAdapter {
+
+    private final OnStartDragListener mDragStartListener;
     private FeelingList feelings;
     final private Context context;
     private Map<String, Integer> icons;
@@ -38,6 +44,7 @@ public class FeelingsAdapter extends RecyclerView.Adapter<CardViewHolder> {
     public CardViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.mood_card, parent,false);
         return new CardViewHolder(itemView);
+        
     }
 
     // pass data from Feeling in feelingList model to corresponding card at given position
@@ -45,6 +52,15 @@ public class FeelingsAdapter extends RecyclerView.Adapter<CardViewHolder> {
     public void onBindViewHolder(final CardViewHolder holder, int position) {
         holder.bindData(feelings.getFeeling(position), context);
 
+        // Open up edit screen when cards clicked
+        holder.card_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent container = new Intent(context.getApplicationContext(), EditCardActivity.class);
+                Toast.makeText(v.getContext(), v.getTag().toString(),Toast.LENGTH_SHORT).show();
+                context.startActivity(container);
+            }
+        });
 
 
     }
@@ -53,5 +69,9 @@ public class FeelingsAdapter extends RecyclerView.Adapter<CardViewHolder> {
     @Override
     public int getItemCount(){
         return feelings.size();
+    }
+
+    public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
+        mItemTouchHelper.startDrag(viewHolder);
     }
 }
