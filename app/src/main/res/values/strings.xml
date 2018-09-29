@@ -6,4 +6,5 @@
     <string name="button_cancel">CANCEL</string>
     <string name="navigation_drawer_close">\"drawer closed\"</string>
     <string name="navigation_drawer_open">\"drawer opened\"</string>
+    <string name="nav_header_title">Mood Counts</string>
 </resources>

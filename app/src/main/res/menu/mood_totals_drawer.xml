@@ -12,28 +12,28 @@
                 app:actionViewClass="android.widget.TextView"/>
             <item
                 android:id="@+id/nav_fear"
-                android:icon="@drawable/ic_fear_icon"
+                android:icon="@drawable/ic_fear_mini"
                 android:title="Fear"
                 app:actionViewClass="android.widget.TextView" />
             <item
                 android:id="@+id/nav_joy"
-                android:icon="@drawable/ic_joy_icon"
+                android:icon="@drawable/ic_joy_mini"
                 android:title="Joy"
                 app:actionViewClass="android.widget.TextView"/>
             <item
                 android:id="@+id/nav_love"
-                android:icon="@drawable/ic_love_icon"
+                android:icon="@drawable/ic_love_mini"
                 android:title="Love"
                 app:actionViewClass="android.widget.TextView"/>
 
             <item
                 android:id="@+id/nav_sadness"
-                android:icon="@drawable/ic_sadness_icon"
+                android:icon="@drawable/ic_sadness_mini"
                 android:title="Sadness"
                 app:actionViewClass="android.widget.TextView"/>
             <item
                 android:id="@+id/nav_surprise"
-                android:icon="@drawable/ic_surprise_icon"
+                android:icon="@drawable/ic_surprise_mini"
                 android:title="Surprise"
                 app:actionViewClass="android.widget.TextView" />
     </group>
