@@ -1,4 +1,10 @@
 <resources>
-    <string name="app_name">FeelsBook</string>
+    <string name="app_name">burghard-FeelsBook</string>
     <string name="title_activity_edit_card">Edit Card Activity</string>
+    <string name="edit_hint">Add comment</string>
+    <string name="button_confirm">OK</string>
+    <string name="button_cancel">CANCEL</string>
+    <string name="navigation_drawer_close">\"drawer closed\"</string>
+    <string name="navigation_drawer_open">\"drawer opened\"</string>
+    <string name="nav_header_title">Mood Counts</string>
 </resources>

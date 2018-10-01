@@ -23,7 +23,7 @@
         android:clickable="false">
 
         <LinearLayout
-            android:tag="CardViewinnerLayout"
+            android:tag="CardViewInnerLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -56,11 +56,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/card_date"
-                android:gravity="center"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/card_comment" />
+                android:gravity="center"
+                android:layout_marginBottom="@dimen/fab_margin"/>
 
         </LinearLayout>
 

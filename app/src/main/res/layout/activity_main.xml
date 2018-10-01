@@ -1,193 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- holder for main view and navigation view-->
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:id="@+id/main_content"
     android:fitsSystemWindows="true"
-    >
+    tools:openDrawer="start">
 
-    <!-- App bar -->
-    <android.support.design.widget.AppBarLayout
+    <include
+        layout="@layout/main_bottom_layer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/collapsingtoolbarly"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|snap|enterAlways">
+        android:layout_height="match_parent" />
 
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:minHeight="?attr/actionBarSize"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:titleTextColor="@android:color/white"
-                android:background="?attr/colorPrimary">
-            </android.support.v7.widget.Toolbar>
-        </android.support.design.widget.CollapsingToolbarLayout>
-    </android.support.design.widget.AppBarLayout>
-
-    <!-- scrolling cards -->
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/MoodHistory"
-        android:layout_width="match_parent"
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        android:clipToPadding="false"
-        android:background="@android:color/transparent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:gravity="bottom">
-        <ImageView
-            android:id="@+id/home_bottom_drawer"
-            android:layout_width="match_parent"
-            android:layout_height="4dp"
-            android:background="@android:color/transparent"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/drawer" />
-    </LinearLayout>
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/mood_totals_drawer"
+        app:headerLayout="@layout/nav_drawer_header" />
 
-    <!-- buttons -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:gravity="bottom"
-        android:orientation="vertical"
-        android:paddingBottom="20dp"
-        android:background="@android:color/transparent"
-        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal"
-            android:background="@android:color/transparent">
-
-            <ImageButton
-                android:tag="anger"
-                android:id="@+id/angerButton"
-                android:layout_width="@dimen/fab_icon_size"
-                android:layout_height="@dimen/fab_icon_size"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="@drawable/button_shadow"
-                android:onClick="addFeeling"
-                android:paddingBottom="15dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="5dp"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_anger_icon"
-                android:foreground="@drawable/button_foreground"
-                />
-
-            <ImageButton
-                android:tag="sadness"
-                android:id="@+id/sadnessButton"
-                android:layout_width="@dimen/fab_icon_size"
-                android:layout_height="@dimen/fab_icon_size"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="@drawable/button_shadow"
-                android:onClick="addFeeling"
-                android:paddingBottom="15dp"
-                android:paddingTop="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_sadness_icon"
-                android:foreground="@drawable/button_foreground" />
-
-            <ImageButton
-                android:tag="fear"
-                android:id="@+id/fearButton"
-                android:layout_width="@dimen/fab_icon_size"
-                android:layout_height="@dimen/fab_icon_size"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="@drawable/button_shadow"
-                android:onClick="addFeeling"
-                android:paddingBottom="15dp"
-                android:paddingTop="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_fear_icon"
-                android:foreground="@drawable/button_foreground" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal"
-            android:background="@android:color/transparent">
-
-            <ImageButton
-                android:tag="joy"
-                android:id="@+id/joyButton"
-                android:layout_width="@dimen/fab_icon_size"
-                android:layout_height="@dimen/fab_icon_size"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="@drawable/button_shadow"
-                android:onClick="addFeeling"
-                android:paddingBottom="15dp"
-                android:paddingTop="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_joy_icon"
-                android:foreground="@drawable/button_foreground" />
-
-            <ImageButton
-                android:tag="surprise"
-                android:id="@+id/surpriseButton"
-                android:layout_width="@dimen/fab_icon_size"
-                android:layout_height="@dimen/fab_icon_size"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="@drawable/button_shadow"
-                android:onClick="addFeeling"
-                android:paddingBottom="15dp"
-                android:paddingTop="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_surprise_icon"
-                android:foreground="@drawable/button_foreground" />
-
-            <ImageButton
-                android:tag="love"
-                android:id="@+id/loveButton"
-                android:layout_width="@dimen/fab_icon_size"
-                android:layout_height="@dimen/fab_icon_size"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="@drawable/button_shadow"
-                android:onClick="addFeeling"
-                android:paddingBottom="15dp"
-                android:paddingTop="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_love_icon"
-                android:foreground="@drawable/button_foreground"/>
-
-        </LinearLayout>
-    </LinearLayout>
-
-
-
-</android.support.design.widget.CoordinatorLayout>
+</android.support.v4.widget.DrawerLayout>

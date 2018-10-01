@@ -1,7 +1,13 @@
 package com.example.noahburghardt.burghard_feelsbook;
 
 
+import android.content.SharedPreferences;
+
+import com.google.gson.Gson;
+
+import java.io.Serializable;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -10,7 +16,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 // Object for storing feelings
-public  class Feeling {
+public  class Feeling implements Serializable {
     private String emotion;
     private Calendar calendar;
     private String comment;
@@ -24,6 +30,11 @@ public  class Feeling {
 
     public String getEmotion(){
         return this.emotion;
+    }
+
+    // return captilized emotion
+    public String getTitle(){
+        return this.emotion.substring(0,1).toUpperCase() + this.emotion.substring(1);
     }
 
     public String getComment(){
@@ -62,8 +73,26 @@ public  class Feeling {
         this.calendar.setTime(date);
     }
 
+    // update date with string from storage
+    public void setStringDate(String dateInString){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+        try {
+            this.calendar.setTime(sdf.parse(dateInString));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // get date as string for storage
+    public String getStringDate(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+        return sdf.format(this.calendar.getTime());
+    }
+
+
+
     // returns the date in string form and iso8601 format
-    public String getDateString(){
+    public String getDate8601(){
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         return df.format(this.calendar.getTime());
     }
@@ -72,4 +101,5 @@ public  class Feeling {
     public Date getDate(){
         return this.calendar.getTime();
     }
+
 }

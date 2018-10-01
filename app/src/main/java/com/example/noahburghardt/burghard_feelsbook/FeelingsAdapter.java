@@ -1,7 +1,6 @@
 /*
 Based off the work by Ravi Tamada at
 https://www.androidhive.info/2016/05/android-working-with-card-view-and-recycler-view/
-18/05/16
  */
 
 package com.example.noahburghardt.burghard_feelsbook;
@@ -19,9 +18,8 @@ import android.widget.Toast;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FeelingsAdapter extends RecyclerView.Adapter<CardViewHolder> implements ItemTouchHelperAdapter {
+public class FeelingsAdapter extends RecyclerView.Adapter<CardViewHolder> {
 
-    private final OnStartDragListener mDragStartListener;
     private FeelingList feelings;
     final private Context context;
     private Map<String, Integer> icons;
@@ -49,16 +47,20 @@ public class FeelingsAdapter extends RecyclerView.Adapter<CardViewHolder> implem
 
     // pass data from Feeling in feelingList model to corresponding card at given position
     @Override
-    public void onBindViewHolder(final CardViewHolder holder, int position) {
-        holder.bindData(feelings.getFeeling(position), context);
+    public void onBindViewHolder(final CardViewHolder holder, final int position) {
+        // grad corresponding Feeling object
+        final Feeling feeling = feelings.getFeeling(position);
+        // bind data
+        holder.bindData(feeling, context);
 
         // Open up edit screen when cards clicked
         holder.card_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent container = new Intent(context.getApplicationContext(), EditCardActivity.class);
-                Toast.makeText(v.getContext(), v.getTag().toString(),Toast.LENGTH_SHORT).show();
+                container.putExtra("position", position);
                 context.startActivity(container);
+
             }
         });
 
@@ -71,7 +73,4 @@ public class FeelingsAdapter extends RecyclerView.Adapter<CardViewHolder> implem
         return feelings.size();
     }
 
-    public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
-        mItemTouchHelper.startDrag(viewHolder);
-    }
 }
