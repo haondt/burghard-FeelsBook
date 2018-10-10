@@ -1,0 +1,7 @@
+#Internal package file, do not edit.
+#Wed Oct 10 11:01:16 MDT 2018
+0.baseType=DIRECTORY
+0.base=C\:\\Users\\noahb\\Documents\\Y3S1\\CMPUT 301\\A1\\burghard-FeelsBook\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+0.path=classes.dex
+0.set=DEX
+count=1

@@ -1,0 +1,4 @@
+#Fri Sep 28 10:05:34 MDT 2018
+base.0=C\:\\Users\\noahb\\Documents\\Y3S1\\CMPUT 301\\A1\\burghard-FeelsBook\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\5
+path.0=classes.dex
+renamed.0=classes.dex
