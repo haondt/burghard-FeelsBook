@@ -11,7 +11,7 @@ Deliverables:
   * Complete code base
   * Video: https://youtu.be/-kHgXGtGa38
   * UML diagram -> /doc/diagram
-  * apk -> app/build/outputs/apk/debug/app-debug.apk
+  * apk -> app/build/outputs/apk/burghard-FeelsBook.apk
 
 Usage:
 1. Homepage of app you are greeted with six buttons
