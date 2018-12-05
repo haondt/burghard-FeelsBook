@@ -1,10 +1,10 @@
 # burghard-FeelsBook
 
-﻿Noah Burghardt
-CCID: burghard
-1492508
+Noah Burghardt
 
+Completed as part of 
 CMPUT 301 Assignment 1 Fall 2018
+at the University of Alberta.
 FeelsBook
 
 Deliverables:
